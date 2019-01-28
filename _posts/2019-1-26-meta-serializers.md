@@ -207,4 +207,4 @@ The use of preprocessor becomes unnecessary when [Reflection proposal](http://ww
 
 ### Metaclass
 
-With metaclasses you are able to define such a metaclass that runs exposing automatically. I highly recommend to read [Metaclasses: Generative C++](www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0707r3.pdf).
+With metaclasses you are able to define such a metaclass that runs exposing automatically. I highly recommend to read [Metaclasses: Generative C++](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0707r3.pdf).
