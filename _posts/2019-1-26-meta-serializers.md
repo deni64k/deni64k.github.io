@@ -94,23 +94,19 @@ A complete and working example can be found at [coliru](https://coliru.stacked-c
 There is, definitely, some amount of boilerplate: we have to maintain two versions of `members` functions. The advanced use of preprocessor can help us to systemize our approach. Let's define a few macros. I'm using [Boost.Preprocessor](https://www.boost.org/doc/libs/1_67_0/libs/preprocessor/doc/index.html) for simplicity.
 
 ```c++
-#define EXPOSE_MEMBERS_Q(M_ignore0, M_ignore1, M_member)                        \
-    BOOST_PP_STRINGIZE(M_member)
-
-#define EXPOSE_MEMBERS(...)                                                     \
-    auto members() {                                                            \
-      return std::forward_as_tuple(                                             \
-        BOOST_PP_LIST_ENUM(BOOST_PP_VARIADIC_TO_LIST(__VA_ARGS__)));            \
-    }                                                                           \
-    auto members() const {                                                      \
-      return std::forward_as_tuple(                                             \
-        BOOST_PP_LIST_ENUM(BOOST_PP_VARIADIC_TO_LIST(__VA_ARGS__)));            \
-    }                                                                           \
-    static constexpr auto names() {                                             \
-      return std::make_array(                                                   \
-        BOOST_PP_LIST_ENUM(                                                     \
-          BOOST_PP_LIST_TRANSFORM(EXPOSE_MEMBERS_Q, @,                          \
-                                  BOOST_PP_VARIADIC_TO_LIST(__VA_ARGS__))));    \
+#define EXPOSE_MEMBERS(...)                                     \
+    auto members() {                                            \
+      return std::forward_as_tuple(__VA_ARGS__);                \
+    }                                                           \
+    auto members() const {                                      \
+      return std::forward_as_tuple(__VA_ARGS__);                \
+    }                                                           \
+    static constexpr auto names() {                             \
+      return std::make_array(                                   \
+        BOOST_PP_LIST_ENUM(                                     \
+          BOOST_PP_LIST_TRANSFORM(                              \
+            EXPOSE_MEMBERS_Q, @,                                \
+            BOOST_PP_VARIADIC_TO_LIST(__VA_ARGS__))));          \
     }
 ```
 
@@ -136,11 +132,14 @@ template <typename T>
 std::ostream& operator << (std::ostream& os, T const& obj) {
   using std::operator<<;
 
-  std::apply([&os](auto const& names, auto const& fst, auto const&... rest) {
+  std::apply([&os](auto const& names,
+                   auto const& fst,
+                   auto const&... rest) {
     unsigned int i = 0;
     os << names[i] << '=' << fst;
     ((os << ", " << names[++i] << '=' << rest), ...);
-  }, std::tuple_cat(std::make_tuple(obj.names()), obj.members()));
+  }, std::tuple_cat(std::make_tuple(obj.names()),
+                    obj.members()));
   return os;
 }
 ```
@@ -179,7 +178,7 @@ std::cout << e << std::endl;
 
 And this approach is appliable for any type simply by using one macro `EXPOSE_MEMBERS`.
 
-A complete and working example can be found at [coliru](https://coliru.stacked-crooked.com/a/b49d8f542292e1b5) (or [gist](https://gist.github.com/deni64k/2e118d8274df6d46d990ff2511152a16) if unreachable).
+A complete and working example can be found at [coliru](https://coliru.stacked-crooked.com/a/037b4d0823e6ff16) (or [gist](https://gist.github.com/deni64k/2e118d8274df6d46d990ff2511152a16) if unreachable).
 
 ## Further improvements
 
@@ -199,7 +198,7 @@ Now, to apply constraints `Serializable` on a template parameter, you simply wri
 
 Note: don't forget to pass `-fconcepts` to gcc while experimenting.
 
-Example at [coliru](https://coliru.stacked-crooked.com/a/e14667e07cc67d9c).
+Example at [coliru](https://coliru.stacked-crooked.com/a/cc8cf550742ef845).
 
 ### Reflection
 
