@@ -64,7 +64,7 @@ Let's write a simple serializer into a stream:
 ```c++
 template <typename T>
 std::ostream& operator << (std::ostream& os, T const& obj) {
-  using std::operator<<;
+  using std::operator <<;
 
   std::apply([&os](auto const& fst, auto const&... rest) {
     os << fst;
@@ -87,7 +87,7 @@ The code above prints
 Steve Jobs, 1
 ```
 
-A complete and working example can be found at [coliru](https://coliru.stacked-crooked.com/a/6fa729e7f39ec041) (or [gist](https://gist.github.com/deni64k/6077048dba21f92b7b70d3f1c614462d) if unreachable).
+A complete and working example can be found at [coliru](https://coliru.stacked-crooked.com/a/747d34b510dd8c46) (or [gist](https://gist.github.com/deni64k/6077048dba21f92b7b70d3f1c614462d) if unreachable).
 
 ## Simplification and Systemizing
 
@@ -130,7 +130,7 @@ The `operator <<` prints the member name as well:
 ```c++
 template <typename T>
 std::ostream& operator << (std::ostream& os, T const& obj) {
-  using std::operator<<;
+  using std::operator <<;
 
   std::apply([&os](auto const& names,
                    auto const& fst,
@@ -149,7 +149,7 @@ The `operator >>` allows us to deserealize an `employee` from a string.
 ```c++
 template <typename T>
 std::istream& operator >> (std::istream& is, T& obj) {
-  using std::operator>>;
+  using std::operator >>;
 
   std::apply([&is](auto&... members) {
     (is >> ... >> members);
