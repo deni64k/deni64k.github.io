@@ -41,7 +41,7 @@ All the time I'll be referrening to my implementation available here: https://gi
 
 Before implementing commands, we should define our basic types forming the Bitcoin commands. For fundamential type such as `uint32_t`, `char[16]`, and variable-length strings, it is easy. We, basically, don't have to do anything besides the transport layer (about which I will tell later.)
 
-For the types with special encoding, e.g. variable-lengtg integers, we give it a separate type, [`var_int`](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L15):
+For the types with special encoding, e.g. variable-length integers, we give it a separate type, [`var_int`](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L15):
 
 ```c++
 struct var_int {
