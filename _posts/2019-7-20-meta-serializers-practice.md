@@ -12,14 +12,14 @@ tags:
 
 In my [previous post]({% post_url 2019-01-26-meta-serializers %}), I described a way to deal with serialization using meta-programming.
 
-Now, I want to show an example. Particularly, we will see how a Bitcoin protocol can be implemented without unnecessary boilerplate.
+Now, I want to show an example. Notably, we will see a Bitcoin protocol implementation without unnecessary boilerplate.
 
 ## Bitcoin 101
 
 You have probably already heard about Bitcoin, a cryptocurrency that relies on a network of peers.
 
-Here, we will focus on the protocol peers use to communicate with each another.
-The full description of the protocol is available here: [Protocol documentation](https://en.bitcoin.it/wiki/Protocol_documentation), which is kind of sparse and hard to follow. In few words, we can say it:
+Here, we will focus on the protocol peers use to communicate with one another.
+The full description of the protocol is available here: [Protocol documentation](https://en.bitcoin.it/wiki/Protocol_documentation), which is kind of sparse and hard to follow. In a few words, we can say it:
 
 * is binary,
 * consists of a bunch of commands,
@@ -29,19 +29,19 @@ The full description of the protocol is available here: [Protocol documentation]
   * IPs, and
   * variable-length strings/integers.
 
-Once a peer, Bitcoin client application, opens an outbound connection, it advertizes its version with a command `version`. If the other peer accepts it, it replies with `verack` and sends its own version.
+Once a peer, Bitcoin client application, opens an outbound connection, it advertises its version with a command `version`. If the other peer accepts it, it replies with `verack` and sends its version.
 
-We will focus on implementation a simple command [`version`](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [`tx`](https://en.bitcoin.it/wiki/Protocol_documentation#tx) - it has conditional fields.
+We will focus on implementing a simple command [`version`](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [`tx`](https://en.bitcoin.it/wiki/Protocol_documentation#tx) - it has conditional fields.
 
-All the time I'll be referrening to my implementation available here: https://github.com/deni64k/btc.
+All the time, I'll be referring to my implementation available here: https://github.com/deni64k/btc.
 
 ## Implementation
 
 ### Basic types
 
-Before implementing commands, we should define our basic types forming the Bitcoin commands. For fundamential type such as `uint32_t`, `char[16]`, and variable-length strings, it is easy. We, basically, don't have to do anything besides the transport layer (about which I will tell later.)
+Before implementing commands, we should define our basic types forming the Bitcoin commands. For fundamental types such as `uint32_t`, `char[16]`, and variable-length strings, it is easy. We don't have to do anything besides the transport layer (about which I will tell later.)
 
-For the types with special encoding, e.g. variable-length integers, we give it a separate type, [`var_int`](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L15):
+For the types with special encoding, e.g., variable-length integers, we give it a separate type, [`var_int`](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L15):
 
 ```c++
 struct var_int {
@@ -160,7 +160,7 @@ struct tx {
 };
 ```
 
-As you may notice, the comments says that the field `flag` may or not be present depending if a transaction contains witnesses. Obviously, a naive way of traversing over all fields blindly will not work out here.
+As you may notice, the comments tell that the field `flag` may or not be present depending if a transaction contains witnesses. Obviously, a naive way of traversing blindly over all fields will not work out here.
 
 To get it working, we will have to write a template specialization, which we will see soon.
 
@@ -240,29 +240,29 @@ struct io_ops<base_ops, proto::tx> {
 ```
 
 The thing is a command may or may not contain witnesses. If it contains, then there will be
-two byte `00 01` prior the number of transactions. Since their number is never zero, and
-stored as an encoded integer, i.e. zero is a single byte `00`, this can be used as a condition.
-That is, if you read a zero as a the number of transaction, it means you got the first byte
-of the `00 01`. And, importantly, such command contains witnesses. Then you skip the rest byte,
+two bytes, `00 01`, prior to the number of transactions. Since their number is never zero and
+stored as an encoded integer, i.e., zero is a single byte, `00`, this can be used as a condition.
+That is, if you read a zero as a number of transaction, it means you got the first byte
+of the `00 01`. And, importantly, such command contains witnesses. Then you skip the second byte
 and read the actual number of transaction. In the code, you can see where boolean `has_witnesses`
 is assigned to `true`.
 
 (I don't know why they made it complicated, but it's a good example for handling special cases.)
 
 There below you will find a [specialization](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L176)
-for types satisfying `SerDes` concepts, i.e. types containing exposed member variables.
+for types satisfying `SerDes` concepts, i.e., types containing exposed member variables.
 I leave digesting it to the reader as a good exercise in meta-programming.
 
 ### Actual IO
 
-You may wonder where are the actual IO operations? And that is a good question.
-In my implementation there are moved into two classes:
+You may wonder where the actual IO operations are? And that is a good question.
+In my implementation, there are moved into two classes:
 * [`socket_ops`](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L199) — implements operations over a file descriptor and throws an exception in case of failure, and
 * [`ostream_ops`](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L234) — similarly, implements operations over an instance of `std::ostream`.
 
 ## Usage
 
-Let's see how we can use it now. First, we need helper functions hiding all the uglyness and complexity:
+Let's see how we can use it now. First, we need helper functions hiding all the ugliness and complexity:
 
 ```c++
 template <SerDes T>
