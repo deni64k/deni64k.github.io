@@ -31,7 +31,7 @@ The full description of the protocol is available here: [Protocol documentation]
 
 Once a peer, Bitcoin client application, opens an outbound connection, it advertises its version with a command `version`. If the other peer accepts it, it replies with `verack` and sends its version.
 
-We will focus on implementing a simple command [`version`](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [`tx`](https://en.bitcoin.it/wiki/Protocol_documentation#tx) - it has conditional fields.
+We will focus on implementing a simple command [`version`](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [`tx`](https://en.bitcoin.it/wiki/Protocol_documentation#tx) -- it has conditional fields.
 
 All the time, I'll be referring to my implementation available here: [https://github.com/deni64k/btc](https://github.com/deni64k/btc).
 
