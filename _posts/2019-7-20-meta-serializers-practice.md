@@ -10,6 +10,7 @@ tags:
   metaclasses
 ---
 
+In my [previous post]({% post_url 2019-01-26-meta-serializers %}), I described a way to deal with serialization using meta-programming.
 
 Now, I want to show an example. Particularly, we will see how a Bitcoin protocol can be implemented without unnecessary boilerplate.
 
@@ -30,7 +31,7 @@ The full description of the protocol is available here: [Protocol documentation]
 
 Once a peer, Bitcoin client application, opens an outbound connection, it advertizes its version with a command `version`. If the other peer accepts it, it replies with `verack` and sends its own version.
 
-We will focus on implementation a simple command [version](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [tx](https://en.bitcoin.it/wiki/Protocol_documentation#tx) - it has conditional fields.
+We will focus on implementation a simple command [`version`](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [`tx`](https://en.bitcoin.it/wiki/Protocol_documentation#tx) - it has conditional fields.
 
 All the time I'll be referrening to my implementation available here: https://github.com/deni64k/btc.
 
@@ -40,7 +41,7 @@ All the time I'll be referrening to my implementation available here: https://gi
 
 Before implementing commands, we should define our basic types forming the Bitcoin commands. For fundamential type such as `uint32_t`, `char[16]`, and variable-length strings, it is easy. We, basically, don't have to do anything besides the transport layer (about which I will tell later.)
 
-For the types with special encoding, e.g. variable-lengtg integers, we give it a separate type, [var_int](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L15):
+For the types with special encoding, e.g. variable-lengtg integers, we give it a separate type, [`var_int`](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L15):
 
 ```c++
 struct var_int {
@@ -51,7 +52,7 @@ struct var_int {
 
 This allows us to distinguish `var_int` from other integers in template specializations.
 
-Finally, for a complex type such as IP address, there has to be created a type [net_addr](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L34):
+Finally, for a complex type such as IP address, there has to be created a type [`net_addr`](https://github.com/deni64k/btc/blob/master/src/common/types.hxx#L34):
 
 ```c++
 using addr_t = std::array<std::uint8_t, 16>;
@@ -79,7 +80,7 @@ Now, let's have a look at commands.
 
 #### version
 
-All commands are declared in [proto/commands.hxx](https://github.com/deni64k/btc/blob/master/src/proto/commands.hxx).
+All commands are declared in [`proto/commands.hxx`](https://github.com/deni64k/btc/blob/master/src/proto/commands.hxx).
 
 In particular, here is `version`:
 
@@ -125,7 +126,7 @@ Note, we have to use a different variation of `net_addr`, `net_addr_version` tha
 
 #### tx
 
-Now, let's tackle something more complicated, [tx](https://github.com/deni64k/btc/blob/master/src/proto/commands.hxx#L209):
+Now, let's tackle something more complicated, [`tx`](https://github.com/deni64k/btc/blob/master/src/proto/commands.hxx#L209):
 
 ```c++
 struct tx {
@@ -187,7 +188,7 @@ struct io_ops {
 
 There below goes a few specializations for arrays, big endian uint16_t (the protocol mainly relies on little endian), variable-length integers, and so on.
 
-Note, there is a special case with [tx](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L136) command:
+Note, there is a special case with [`tx`](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L136) command:
 
 ```c++
 template <typename base_ops>
@@ -256,8 +257,8 @@ I leave digesting it to the reader as a good exercise in meta-programming.
 
 You may wonder where are the actual IO operations? And that is a good question.
 In my implementation there are moved into two classes:
-* [socket_ops](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L199) — implements operations over a file descriptor and throws an exception in case of failure, and
-* [ostream_ops](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L234) — similarly, implements operations over an instance of `std::ostream`.
+* [`socket_ops`](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L199) — implements operations over a file descriptor and throws an exception in case of failure, and
+* [`ostream_ops`](https://github.com/deni64k/btc/blob/master/src/io/ops.hxx#L234) — similarly, implements operations over an instance of `std::ostream`.
 
 ## Usage
 
