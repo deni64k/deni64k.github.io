@@ -33,7 +33,7 @@ Once a peer, Bitcoin client application, opens an outbound connection, it advert
 
 We will focus on implementing a simple command [`version`](https://en.bitcoin.it/wiki/Protocol_documentation#version), and a more complicated one, [`tx`](https://en.bitcoin.it/wiki/Protocol_documentation#tx) - it has conditional fields.
 
-All the time, I'll be referring to my implementation available here: [](https://github.com/deni64k/btc).
+All the time, I'll be referring to my implementation available here: [https://github.com/deni64k/btc](https://github.com/deni64k/btc).
 
 ## Implementation
 
