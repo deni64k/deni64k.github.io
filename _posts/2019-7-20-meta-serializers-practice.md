@@ -10,7 +10,6 @@ tags:
   metaclasses
 ---
 
-In my [previous post]({% post_url 2019-01-19-meta-serializers %}), I described a way to deal with serialization using meta-programming.
 
 Now, I want to show an example. Particularly, we will see how a Bitcoin protocol can be implemented without unnecessary boilerplate.
 
