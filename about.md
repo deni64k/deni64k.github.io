@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hi there! I'm a C++ enthusiast and a newbie at AI.
+Hi there! I'm a C++ and blockchain enthusiast.
 
 ### My presentations
 
@@ -20,4 +20,10 @@ More soon!
 
 ### Contact me
 
-[d.sukhonin@gmail.com](mailto:d.sukhonin+deni64k@gmail.com)
+Discord: deni64k#5549
+
+Email: [d.sukhonina@gmail.com](mailto:d.sukhonina+deni64k@gmail.com)
+
+### Donuts
+
+Eth: `0x39996591D206144fa6801CdC5FD6D94312F3D9e0`
