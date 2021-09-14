@@ -8,7 +8,9 @@ Hello stranger,
 
 I got my archive node fully synced and want to share access to it with you and anyone interested.
 
-You can access it via an ngrok tunnel. If I see real interest in it, I will come up with a better solution. In terms of SLA, I think 95% would be reasonable to expect: my Internet connection can be flaky. I can also share the database by request: ~8.1 TB.
+You can access it via an ngrok tunnel. If I see real interest in it, I will come up with a better solution. I can also share the database by request: ~8.1 TB.
+
+Expected SLA is 98%, actual one https://synthetics.eu.newrelic.com/report/sdvuj?view=daily-sla-report.
 
 The node is available by this URL: https://ec453b92cd8c.ngrok.io/
 
