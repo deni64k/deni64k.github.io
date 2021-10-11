@@ -27,7 +27,7 @@ $ curl -sX POST                                                                 
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": "Geth/v1.10.5-stable-33ca98ec/linux-amd64/go1.16.3"
+  "result": "Geth/v1.10.9-stable-eae3b194/linux-amd64/go1.17.1"
 }
 ```
 
