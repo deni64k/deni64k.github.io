@@ -10,7 +10,7 @@ I got my archive node fully synced and want to share access to it with you and a
 
 You can access it via an ngrok tunnel. If I see real interest in it, I will come up with a better solution. I can also share the database by request: ~8.1 TB.
 
-The node is available by this URL: http://ec2-3-96-144-228.ca-central-1.compute.amazonaws.com/
+The node is available by this URL: https://geth.deni64k.online/
 
 The expected SLA: 98%.
 
@@ -23,7 +23,7 @@ Here is an example of an API call:
 $ curl -sX POST                                                                     \
        --data '{"method":"web3_clientVersion","params":[],"id":1,"jsonrpc":"2.0"}'  \
        -H "Content-Type: application/json"                                          \
-       -L http://ec2-3-96-144-228.ca-central-1.compute.amazonaws.com/ | jq -CS
+       https://geth.deni64k.online/ | jq -CS
 {
   "id": 1,
   "jsonrpc": "2.0",
