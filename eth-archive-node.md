@@ -14,7 +14,7 @@ The node is available by this URL: https://geth.deni64k.online/.
 
 The expected SLA: 98%.
 
-The measured SLA: [https://www.deni64k.online/eth-archive-node/](https://www.deni64k.online/eth-archive-node/).
+The measured SLA: [https://illuminati.statuspage.io/](https://illuminati.statuspage.io/).
 
 
 Here is an example of an API call:
