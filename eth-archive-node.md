@@ -10,11 +10,11 @@ I got my archive node fully synced and want to share access to it with you and a
 
 You can access it via an ngrok tunnel. If I see real interest in it, I will come up with a better solution. I can also share the database by request: ~8.1 TB.
 
-The node is available by this URL: https://geth.deni64k.online/
+The node is available by this URL: https://geth.deni64k.online/.
 
 The expected SLA: 98%.
 
-The measured SLA: https://synthetics.eu.newrelic.com/report/sdvuj?view=daily-sla-report.
+The measured SLA: [https://www.deni64k.online/eth-archive-node/](https://www.deni64k.online/eth-archive-node/).
 
 
 Here is an example of an API call:
