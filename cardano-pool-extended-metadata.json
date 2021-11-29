@@ -1,0 +1,16 @@
+{
+    "how-to-implement": "in your meta.json - define *extended* with url to this (json) file - https://raw.githubusercontent.com/cardanians/adapools.org/master/example-meta.json",
+    "info": {
+        "location": "Canada",
+        "social": {
+            "discord_handle": "deni64k#5549",
+            "github_handle": "deni64k"
+        },
+        "about": {
+            "server": "Dedicated server"
+        }
+    },
+    "my-pool-ids": {
+        "0": "0ac4b2cb44acb291581564a22f3bb5bd4aab2ff6ce1088640cc1d2fd"
+    }
+}
