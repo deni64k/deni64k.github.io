@@ -14,7 +14,7 @@ The node is available by this URL: https://geth.deni64k.online/.
 
 The expected SLA: 98%.
 
-The measured SLA: [https://illuminati.statuspage.io/](https://illuminati.statuspage.io/).
+~The measured SLA: [https://illuminati.statuspage.io/](https://illuminati.statuspage.io/).~ The status page is broken due to changes in their API.
 
 
 Here is an example of an API call:
