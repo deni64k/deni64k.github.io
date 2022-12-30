@@ -16,6 +16,12 @@ excerpt:
 
 $405.37 USD
 
+## Beneficiary
+
+[Elena's animal shelter in Odesa, Ukraine](https://www.facebook.com/profile.php?id=100027543013435).
+
+Elena maintains hundreds of cats and dogs, treats them, even if they have complicated cases with oncology.
+
 ## Transactions
 
 1. Withdrawal of the rewards: 1,766.058539 ADA.
