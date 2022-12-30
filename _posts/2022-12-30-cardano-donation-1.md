@@ -4,6 +4,8 @@ title: "The Very First Donation from the Cardano Pool MEOW"
 categories: [charity, cardano]
 tags:
   animal shelters
+excerpt:
+  Donated $405.37 USD to an animal shelter in Ukraine.
 ---
 
 ## Rewards
