@@ -10,7 +10,7 @@ I am running a charity staking pool on Cardano with the ticker [`MEOW`](https://
 It's called `MEOW` 🐈 for a reason: I am an avid lover of cats, and have devoted my life to one of them named Jack.
 
 <p align="center">
-  <img src="/images/jack.jpg" alt="Jack's photo" width="400px" style="align: center"/>
+  <img src="/images/jack.jpg" alt="Jack's photo" width="400px"/>
 </p>
 
 All the rewards I get as the pool's owner (excluding the delegators) are donated to animal shelters. My pool is very small, but the more delegators I get,
