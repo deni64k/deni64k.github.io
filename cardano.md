@@ -18,4 +18,4 @@ the more blocks can be produced and more rewards can be donated.
 
 Donations records:
 
-1. [Elena's shelter in Odesa, Ukraine](https://www.facebook.com/profile.php?id=100027543013435). Receipts are [here.](/cardano-donation-1)
+1. [Elena's shelter in Odesa, Ukraine](https://www.facebook.com/profile.php?id=100027543013435). Receipts are here: {% post_url 2022-12-30-cardano-donation-1 %}.
