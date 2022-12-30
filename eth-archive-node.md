@@ -12,11 +12,6 @@ You can access it via an ngrok tunnel. If I see real interest in it, I will come
 
 The node is available by this URL: https://geth.deni64k.online/.
 
-The expected SLA: 98%.
-
-~The measured SLA: [https://illuminati.statuspage.io/](https://illuminati.statuspage.io/).~ The status page is broken due to changes in their API.
-
-
 Here is an example of an API call:
 
 ``` sh
@@ -27,12 +22,14 @@ $ curl -sX POST                                                                 
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "result": "Geth/v1.10.9-stable-eae3b194/linux-amd64/go1.17.1"
+  "result": "Geth/v1.10.26-stable-e5eb32ac/linux-amd64/go1.18.3"
 }
 ```
 
 You can contact me on Discord: `deni64k#5549`.
 
-If you wish to donate: `0x39996591D206144fa6801CdC5FD6D94312F3D9e0`.
+If you wish to donate:
+* ADA `addr1qxteqqjlhhr00xe4ghnyfuz7v0jgnnkcfdhfvgt65l8xejhagejn870vtla5906tupyzdwfj4r6eju2pv3ady8vuynfslralt3`
+* ETH `0x39996591D206144fa6801CdC5FD6D94312F3D9e0`
 
 Please, don't DDOS it.
