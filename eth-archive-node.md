@@ -28,7 +28,7 @@ $ curl -sX POST                                                                 
 
 The benefit of an archive node is you can receive the balance of a wallet at any block. For instance, the balance of `0x388C818CA8B9251b393131C08a736A67ccB19297` (Lido Rewards Vault) at block 18748800 was 8765235897697649868 wei:
 
-```
+``` sh
 $ cat <<EOF                                                                                   \
   | curl -sX POST -H "Content-Type: application/json" --data @- https://geth.deni64k.online/  \
   | jq -r .result | xargs printf 'Balance is %d wei\n'
