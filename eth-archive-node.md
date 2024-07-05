@@ -4,7 +4,8 @@ title: Ethereum Archive Node
 permalink: /eth-archive-node/
 ---
 
-> [!WARNING] :warning: Due to the lack of interest and my BTRFS array being crushed, the node is no longer archive. Please, contact me if you're interested in this project.
+> ##### WARNING
+> Due to the lack of interest and my BTRFS array being crushed, the node is no longer available. Please contact me if you're interested in this project.
 
 Hello stranger,
 
