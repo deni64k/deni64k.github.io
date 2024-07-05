@@ -5,6 +5,7 @@ permalink: /eth-archive-node/
 ---
 
 > ##### WARNING
+> 
 > Due to the lack of interest and my BTRFS array being crushed, the node is no longer available. Please contact me if you're interested in this project.
 {: .block-warning }
 
